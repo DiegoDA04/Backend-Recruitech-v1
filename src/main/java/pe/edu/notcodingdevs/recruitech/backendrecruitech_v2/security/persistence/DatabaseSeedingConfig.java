@@ -1,10 +1,10 @@
-package pe.edu.notcodingdevs.recruitech.backendrecruitech.security.persistence;
+package pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.security.persistence;
 
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
-import pe.edu.notcodingdevs.recruitech.backendrecruitech.profile.domain.service.LocationService;
-import pe.edu.notcodingdevs.recruitech.backendrecruitech.security.domain.service.RoleService;
+import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.domain.service.LocationService;
+import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.security.domain.service.RoleService;
 
 @Component
 public class DatabaseSeedingConfig {

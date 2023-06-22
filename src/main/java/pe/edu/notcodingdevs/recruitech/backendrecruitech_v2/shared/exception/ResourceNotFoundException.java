@@ -1,4 +1,4 @@
-package pe.edu.notcodingdevs.recruitech.backendrecruitech.shared.exception;
+package pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.shared.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

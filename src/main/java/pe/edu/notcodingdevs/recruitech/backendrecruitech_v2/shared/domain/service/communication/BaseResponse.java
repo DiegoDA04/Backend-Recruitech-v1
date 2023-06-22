@@ -1,4 +1,4 @@
-package pe.edu.notcodingdevs.recruitech.backendrecruitech.shared.domain.service.communication;
+package pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.shared.domain.service.communication;
 
 import lombok.Getter;
 import lombok.Setter;

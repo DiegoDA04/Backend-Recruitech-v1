@@ -1,4 +1,4 @@
-package pe.edu.notcodingdevs.recruitech.backendrecruitech.security.middleware;
+package pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.security.middleware;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

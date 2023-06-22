@@ -1,4 +1,4 @@
-package pe.edu.notcodingdevs.recruitech.backendrecruitech.file_management.domain.model.entity;
+package pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.filemanagement.domain.model.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

@@ -1,12 +1,12 @@
-package pe.edu.notcodingdevs.recruitech.backendrecruitech.file_management.service;
+package pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.filemanagement.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import pe.edu.notcodingdevs.recruitech.backendrecruitech.file_management.domain.model.entity.ImageData;
-import pe.edu.notcodingdevs.recruitech.backendrecruitech.file_management.domain.persistence.ImageDataRepository;
-import pe.edu.notcodingdevs.recruitech.backendrecruitech.file_management.domain.service.ImageDataService;
-import pe.edu.notcodingdevs.recruitech.backendrecruitech.file_management.utils.ImageUtils;
-import pe.edu.notcodingdevs.recruitech.backendrecruitech.shared.exception.ResourceNotFoundException;
+import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.filemanagement.domain.model.entity.ImageData;
+import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.filemanagement.domain.persistence.ImageDataRepository;
+import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.filemanagement.domain.service.ImageDataService;
+import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.filemanagement.resource.ImageResource;
+import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.filemanagement.utils.ImageUtils;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -14,14 +14,16 @@ import java.util.Optional;
 @Service
 public class ImageDataServiceImpl implements ImageDataService {
 
+    private static final String PATH = "http://www.localhost:8080/api/v1/files/images/";
     private final ImageDataRepository imageDataRepository;
+
 
     public ImageDataServiceImpl(ImageDataRepository imageDataRepository) {
         this.imageDataRepository = imageDataRepository;
     }
 
     @Override
-    public String uploadImage(MultipartFile file) throws IOException {
+    public ImageResource uploadImage(MultipartFile file) throws IOException {
         ImageData imageData = imageDataRepository.save(new ImageData()
                 .withName(file.getOriginalFilename())
                 .withType(file.getContentType())
@@ -29,7 +31,10 @@ public class ImageDataServiceImpl implements ImageDataService {
         );
 
         if(imageData != null) {
-            return "fil uploaded successfully: " + file.getOriginalFilename();
+            return new ImageResource()
+                    .withSuccess(true)
+                    .withMessage("file uploaded successfully: " + file.getOriginalFilename())
+                    .withPath(PATH + file.getOriginalFilename());
         }
 
         return null;

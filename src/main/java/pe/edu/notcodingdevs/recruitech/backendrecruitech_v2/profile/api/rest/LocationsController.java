@@ -1,4 +1,4 @@
-package pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.domain.api.rest;
+package pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.api.rest;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.domain.Page;
@@ -51,7 +51,7 @@ public class LocationsController {
     }
 
     @PostMapping("/countries")
-    public ResponseEntity<CountryResource> createLocation(@RequestBody CreateCountryResource resource) {
+    public ResponseEntity<CountryResource> createCountry(@RequestBody CreateCountryResource resource) {
         return new ResponseEntity<>(countryMapper
                 .toResource(countryService
                         .create(countryMapper

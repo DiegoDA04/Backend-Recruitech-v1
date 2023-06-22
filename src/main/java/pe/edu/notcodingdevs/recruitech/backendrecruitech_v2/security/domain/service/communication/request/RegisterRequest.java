@@ -1,4 +1,4 @@
-package pe.edu.notcodingdevs.recruitech.backendrecruitech.security.domain.service.communication.request;
+package pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.security.domain.service.communication.request;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

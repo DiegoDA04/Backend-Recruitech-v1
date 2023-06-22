@@ -1,13 +1,16 @@
-package pe.edu.notcodingdevs.recruitech.backendrecruitech.security.domain.model.entity;
+package pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.security.domain.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
-import pe.edu.notcodingdevs.recruitech.backendrecruitech.profile.domain.model.entity.Developer;
-import pe.edu.notcodingdevs.recruitech.backendrecruitech.shared.domain.model.AuditModel;
+import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.chat.domain.model.entity.Chat;
+import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.chat.domain.model.entity.Message;
+import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.domain.model.entity.Developer;
+import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.shared.domain.model.AuditModel;
 
 import java.util.HashSet;
 import java.util.Set;

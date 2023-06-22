@@ -1,9 +1,9 @@
-package pe.edu.notcodingdevs.recruitech.backendrecruitech.security.domain.persistence;
+package pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.security.domain.persistence;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import pe.edu.notcodingdevs.recruitech.backendrecruitech.security.domain.model.entity.Role;
-import pe.edu.notcodingdevs.recruitech.backendrecruitech.security.domain.model.enumeration.Roles;
+import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.security.domain.model.entity.Role;
+import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.security.domain.model.enumeration.Roles;
 
 import java.util.Optional;
 

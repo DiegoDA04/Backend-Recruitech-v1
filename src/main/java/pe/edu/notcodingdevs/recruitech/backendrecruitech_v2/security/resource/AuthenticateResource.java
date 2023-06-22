@@ -1,4 +1,4 @@
-package pe.edu.notcodingdevs.recruitech.backendrecruitech.security.resource;
+package pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.security.resource;
 
 import lombok.*;
 

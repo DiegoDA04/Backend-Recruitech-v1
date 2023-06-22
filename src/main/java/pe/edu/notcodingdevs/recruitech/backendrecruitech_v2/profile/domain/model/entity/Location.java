@@ -1,4 +1,4 @@
-package pe.edu.notcodingdevs.recruitech.backendrecruitech.profile.domain.model.entity;
+package pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.domain.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -29,12 +29,19 @@ public class Location {
     @Length(max = 40)
     private String name;
 
+    @Column(name = "location_name")
+    private String locationName;
+
+    // ==== RELATIONSHIPS ===
+
+    // MANY TO ONE - COUNTRY
     @ManyToOne
     @JoinColumn(name = "country_id", nullable = false)
     private Country country;
 
+    // ONE TO MANY - COMPANY
     @OneToMany(cascade = CascadeType.ALL,
             fetch = FetchType.EAGER, mappedBy = "location")
     @JsonIgnore
-    private Set<Developer> developers = new HashSet<>();
+    private Set<Company> companies = new HashSet<>();
 }

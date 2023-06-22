@@ -1,4 +1,4 @@
-package pe.edu.notcodingdevs.recruitech.backendrecruitech.security.middleware;
+package pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.security.middleware;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
@@ -7,9 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.With;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-
 import org.springframework.security.core.userdetails.UserDetails;
-import pe.edu.notcodingdevs.recruitech.backendrecruitech.security.domain.model.entity.User;
+import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.security.domain.model.entity.User;
 
 import java.util.Collection;
 import java.util.List;

@@ -1,6 +1,6 @@
-package pe.edu.notcodingdevs.recruitech.backendrecruitech.security.resource;
+package pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.security.resource;
 import lombok.*;
-import pe.edu.notcodingdevs.recruitech.backendrecruitech.security.domain.model.entity.Role;
+import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.security.domain.model.entity.Role;
 
 import java.util.Set;
 

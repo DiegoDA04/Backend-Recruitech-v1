@@ -1,10 +1,10 @@
-package pe.edu.notcodingdevs.recruitech.backendrecruitech.security.domain.service;
+package pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.security.domain.service;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import pe.edu.notcodingdevs.recruitech.backendrecruitech.security.domain.model.entity.User;
-import pe.edu.notcodingdevs.recruitech.backendrecruitech.security.domain.service.communication.request.LoginRequest;
-import pe.edu.notcodingdevs.recruitech.backendrecruitech.security.domain.service.communication.request.RegisterRequest;
+import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.security.domain.model.entity.User;
+import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.security.domain.service.communication.request.LoginRequest;
+import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.security.domain.service.communication.request.RegisterRequest;
 
 public interface UserService extends UserDetailsService {
     ResponseEntity<?> authenticate(LoginRequest request);

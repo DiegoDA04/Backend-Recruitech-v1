@@ -1,4 +1,4 @@
-package pe.edu.notcodingdevs.recruitech.backendrecruitech.profile.domain.model.entity;
+package pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.domain.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -29,6 +29,9 @@ public class Country {
     @Length(max = 40)
     private String name;
 
+    // RELATIONSHIPS
+
+    // ONE TO MANY - LOCATIONS
     @OneToMany(cascade = CascadeType.ALL,
             fetch = FetchType.EAGER, mappedBy = "country")
     @JsonIgnore

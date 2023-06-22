@@ -1,4 +1,4 @@
-package pe.edu.notcodingdevs.recruitech.backendrecruitech.file_management.utils;
+package pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.filemanagement.utils;
 
 import java.io.ByteArrayOutputStream;
 import java.util.zip.Deflater;
