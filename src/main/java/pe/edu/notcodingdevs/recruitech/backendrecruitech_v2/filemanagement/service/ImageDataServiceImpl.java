@@ -9,14 +9,14 @@ import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.filemanagement.resou
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.filemanagement.utils.ImageUtils;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class ImageDataServiceImpl implements ImageDataService {
 
-    private static final String PATH = "http://www.localhost:8080/api/v1/files/images/";
+    private static final String PATH = "http://192.168.241.55:8080/api/v1/files/images/";
     private final ImageDataRepository imageDataRepository;
-
 
     public ImageDataServiceImpl(ImageDataRepository imageDataRepository) {
         this.imageDataRepository = imageDataRepository;
@@ -24,6 +24,16 @@ public class ImageDataServiceImpl implements ImageDataService {
 
     @Override
     public ImageResource uploadImage(MultipartFile file) throws IOException {
+
+        Optional<ImageData> dbImageData = imageDataRepository.findByName(file.getOriginalFilename());
+
+        if(dbImageData.isPresent()) {
+            return new ImageResource()
+                    .withSuccess(true)
+                    .withMessage("file uploaded successfully: " + dbImageData.get().getName())
+                    .withPath(PATH + dbImageData.get().getName());
+        }
+
         ImageData imageData = imageDataRepository.save(new ImageData()
                 .withName(file.getOriginalFilename())
                 .withType(file.getContentType())
@@ -39,7 +49,6 @@ public class ImageDataServiceImpl implements ImageDataService {
 
         return null;
     }
-
     @Override
     public byte[] downloadImage(String filename) {
         Optional<ImageData> dbImageData = imageDataRepository.findByName(filename);

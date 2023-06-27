@@ -29,7 +29,7 @@ public class ChatController {
         this.objectMapper = objectMapper;
     }
 
-    @MessageMapping("/chat2")
+    @MessageMapping("/chat")
     public void processMessage(@Payload Message chatMessage) {
 
         var chatId = chatService

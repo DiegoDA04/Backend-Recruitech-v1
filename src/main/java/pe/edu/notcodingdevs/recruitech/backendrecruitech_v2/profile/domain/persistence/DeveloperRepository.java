@@ -6,4 +6,5 @@ import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.domain.model
 
 @Repository
 public interface DeveloperRepository extends JpaRepository<Developer, Long> {
+    Developer findByUserId(Long userId);
 }

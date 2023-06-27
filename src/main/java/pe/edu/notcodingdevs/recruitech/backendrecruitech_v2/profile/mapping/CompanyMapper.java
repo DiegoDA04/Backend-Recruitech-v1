@@ -10,6 +10,7 @@ import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.resource.loc
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.resource.location.CreateCountryResource;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.resource.profile.CompanyResource;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.resource.profile.CreateCompanyResource;
+import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.resource.profile.UpdateAboutCompanyResource;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.resource.profile.UpdateCompanyResource;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.shared.mapping.EnhancedModelMapper;
 
@@ -29,6 +30,10 @@ public class CompanyMapper implements Serializable {
     }
 
     public Company toModel(UpdateCompanyResource resource) {
+        return mapper.map(resource, Company.class);
+    }
+
+    public Company toModel(UpdateAboutCompanyResource resource) {
         return mapper.map(resource, Company.class);
     }
 

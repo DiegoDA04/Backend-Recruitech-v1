@@ -44,6 +44,9 @@ public class CompanyServiceImpl implements CompanyService {
 
         Optional<Location> location = locationRepository.findById(locationId);
         company.setLocation(location.get());
+        company.setBackgroundPicture("https://spring-app-recruitech.bluewave-aef3079f.eastus.azurecontainerapps.io/api/v1/files/images/default_background.png");
+        company.setProfilePicture("https://spring-app-recruitech.bluewave-aef3079f.eastus.azurecontainerapps.io/api/v1/files/images/default_profile.png");
+        company.setAbout("");
 
         return companyRepository.save(company);
     }
@@ -65,6 +68,34 @@ public class CompanyServiceImpl implements CompanyService {
                 companyRepository.save(existingCompany
                         .withName(company.getName())
                         .withAbout(company.getAbout())))
+                .orElseThrow(() -> new ResourceNotFoundException(ENTITY, companyId)
+                );
+    }
+
+    @Override
+    public Company updateAbout(Long companyId, Company company) {
+
+        return companyRepository.findById(companyId).map(existingCompany ->
+                        companyRepository.save(existingCompany
+                                .withAbout(company.getAbout())))
+                .orElseThrow(() -> new ResourceNotFoundException(ENTITY, companyId)
+                );
+    }
+
+    @Override
+    public Company updateProfilePicture(Long companyId, String profilePicture) {
+        return companyRepository.findById(companyId).map(existingCompany ->
+                        companyRepository.save(existingCompany
+                                .withProfilePicture(profilePicture)))
+                .orElseThrow(() -> new ResourceNotFoundException(ENTITY, companyId)
+                );
+    }
+
+    @Override
+    public Company updateBackgroundPicture(Long companyId, String backgroundPicture) {
+        return companyRepository.findById(companyId).map(existingCompany ->
+                        companyRepository.save(existingCompany
+                                .withBackgroundPicture(backgroundPicture)))
                 .orElseThrow(() -> new ResourceNotFoundException(ENTITY, companyId)
                 );
     }

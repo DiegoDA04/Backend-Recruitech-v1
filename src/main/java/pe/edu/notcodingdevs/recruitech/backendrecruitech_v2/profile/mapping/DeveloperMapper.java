@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.domain.model.entity.Developer;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.resource.profile.CreateDeveloperResource;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.resource.profile.DeveloperResource;
+import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.resource.profile.UpdateAboutDeveloperResource;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.shared.mapping.EnhancedModelMapper;
 
 import java.io.Serializable;
@@ -21,6 +22,10 @@ public class DeveloperMapper implements Serializable {
     }
 
     public Developer toModel(CreateDeveloperResource resource) {
+        return mapper.map(resource, Developer.class);
+    }
+
+    public Developer toModel(UpdateAboutDeveloperResource resource) {
         return mapper.map(resource, Developer.class);
     }
 

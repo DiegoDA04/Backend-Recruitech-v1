@@ -38,6 +38,11 @@ public class Job {
 
     @NotNull
     @NotBlank
+    @Column(name = "skills_description")
+    private String skillsDescription;
+
+    @NotNull
+    @NotBlank
     private String type;
 
     @NotNull

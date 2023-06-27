@@ -8,7 +8,10 @@ import java.util.List;
 
 public interface DeveloperService {
     Developer create(Developer developer, User user, Location location);
-
+    Developer updateProfilePicture(Long developerId, String profilePicture);
+    Developer updateBackgroundPicture(Long developerId, String backgroundPicture);
+    Developer updateAbout(Long developerId, Developer developer);
     List<Developer> getAll();
     Developer getById(Long developerId);
+    Developer getByUSerId(Long userId);
 }

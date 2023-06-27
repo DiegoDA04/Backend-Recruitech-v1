@@ -37,4 +37,6 @@ public class JobsController {
     public ResponseEntity<JobResource> getJobById(@PathVariable Long jobId) {
         return new ResponseEntity<>(jobMapper.toResource(jobService.getById(jobId)), HttpStatus.OK);
     }
+
+
 }

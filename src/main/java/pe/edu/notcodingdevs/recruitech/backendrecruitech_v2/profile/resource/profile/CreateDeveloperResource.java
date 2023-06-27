@@ -1,6 +1,7 @@
 package pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.resource.profile;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -38,9 +39,11 @@ public class CreateDeveloperResource {
     @NotBlank
     private String gender;
 
-    private String photoUrl;
+    private String occupation;
 
     private CreateLocationResource location;
+    private String backgroundPicture;
+    private String profilePicture;
 
     @Email
     @NotNull

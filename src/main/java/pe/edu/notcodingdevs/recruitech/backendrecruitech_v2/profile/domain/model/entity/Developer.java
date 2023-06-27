@@ -22,8 +22,7 @@ import java.util.Set;
 @NoArgsConstructor
 @With
 @Table(name = "developers")
-@JsonIgnoreProperties(value = {"createdAt", "updatedAt"}, allowGetters = true)
-public class Developer extends AuditModel {
+public class Developer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,7 +41,10 @@ public class Developer extends AuditModel {
     private String lastName;
 
     @Length(max = 240)
+    @NotNull
     private String about;
+
+    private String occupation;
 
     @NotNull
     @NotBlank
@@ -54,8 +56,11 @@ public class Developer extends AuditModel {
     @NotBlank
     private String gender;
 
-    @Column(name = "photo_url")
-    private String photoUrl;
+    @Column(name = "background_picture")
+    private String backgroundPicture;
+
+    @Column(name = "profile_picture")
+    private String profilePicture;
 
     // RELATIONSHIPS
 

@@ -1,5 +1,6 @@
 package pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.service;
 
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.domain.model.entity.Developer;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.domain.model.entity.Location;
@@ -27,10 +28,38 @@ public class DeveloperServiceImpl implements DeveloperService {
     public Developer create(Developer developer, User user, Location location) {
         developer.setLocation(location);
         developer.setUser(user);
-        if(developer.getPhotoUrl().isBlank() || developer.getPhotoUrl().isEmpty())
-                developer.setPhotoUrl("http://localhost:8080/api/v1/files/images/default_profile_png");
+        developer.setBackgroundPicture("https://spring-app-recruitech.bluewave-aef3079f.eastus.azurecontainerapps.io/api/v1/files/images/default_background.png");
+        developer.setProfilePicture("https://spring-app-recruitech.bluewave-aef3079f.eastus.azurecontainerapps.io/api/v1/files/images/default_profile.png");
+        developer.setAbout("");
 
         return developerRepository.save(developer);
+    }
+
+    @Override
+    public Developer updateProfilePicture(Long developerId, String profilePicture) {
+        return developerRepository.findById(developerId).map(existingDeveloper ->
+                        developerRepository.save(existingDeveloper
+                                .withProfilePicture(profilePicture)))
+                .orElseThrow(() -> new ResourceNotFoundException(ENTITY, developerId)
+                );
+    }
+
+    @Override
+    public Developer updateBackgroundPicture(Long developerId, String backgroundPicture) {
+        return developerRepository.findById(developerId).map(existingDeveloper ->
+                        developerRepository.save(existingDeveloper
+                                .withBackgroundPicture(backgroundPicture)))
+                .orElseThrow(() -> new ResourceNotFoundException(ENTITY, developerId)
+                );
+    }
+
+    @Override
+    @Transactional
+    public Developer updateAbout(Long developerId, Developer developer) {
+        return developerRepository.findById(developerId).map(existingDeveloper ->
+                developerRepository.save(existingDeveloper
+                        .withAbout(developer.getAbout())))
+                .orElseThrow(() -> new ResourceNotFoundException(ENTITY, developerId));
     }
 
     @Override
@@ -41,5 +70,10 @@ public class DeveloperServiceImpl implements DeveloperService {
     @Override
     public Developer getById(Long developerId) {
         return developerRepository.findById(developerId).orElseThrow(() -> new ResourceNotFoundException(ENTITY, developerId));
+    }
+
+    @Override
+    public Developer getByUSerId(Long userId) {
+        return developerRepository.findByUserId(userId);
     }
 }

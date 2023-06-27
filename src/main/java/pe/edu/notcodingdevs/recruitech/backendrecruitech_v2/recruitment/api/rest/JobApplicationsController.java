@@ -29,7 +29,7 @@ public class JobApplicationsController {
         return new ResponseEntity<>(jobApplicationMapper.toResource(jobApplicationService.create(developerId,jobId)), HttpStatus.CREATED);
     }
 
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<Page<JobApplicationResource>> createJobApplication(Pageable pageable) {
         return new ResponseEntity<>(jobApplicationMapper.modelListPage(jobApplicationService.getAll(), pageable), HttpStatus.OK);
     }

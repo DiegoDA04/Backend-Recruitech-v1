@@ -14,4 +14,6 @@ public class CompanyResource {
     private String name;
     private String about;
     private LocationResource location;
+    private String profilePicture;
+    private String backgroundPicture;
 }

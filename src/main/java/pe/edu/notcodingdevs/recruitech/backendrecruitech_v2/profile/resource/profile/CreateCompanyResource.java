@@ -1,5 +1,6 @@
 package pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.resource.profile;
 
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -18,4 +19,7 @@ public class CreateCompanyResource {
 
     @Length(max = 120)
     private String about;
+
+    private String profilePicture;
+    private String backgroundPicture;
 }

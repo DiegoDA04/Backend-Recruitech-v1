@@ -19,6 +19,7 @@ import java.util.Set;
 @With
 @Table(name = "companies")
 public class Company {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonIgnore
@@ -31,6 +32,12 @@ public class Company {
 
     @Length(max = 120)
     private String about;
+
+    @Column(name = "profile_picture")
+    private String profilePicture;
+
+    @Column(name = "background_picture")
+    private String backgroundPicture;
 
     // RELATIONSHIPS
 

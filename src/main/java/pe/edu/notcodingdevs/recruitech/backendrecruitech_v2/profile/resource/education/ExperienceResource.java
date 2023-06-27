@@ -11,5 +11,6 @@ import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.resource.pro
 public class ExperienceResource {
     private Long id;
     private String title;
+    private String description;
     private CompanyResource company;
 }

@@ -8,8 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.domain.service.CompanyService;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.mapping.CompanyMapper;
-import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.resource.profile.CompanyResource;
-import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.resource.profile.CreateCompanyResource;
+import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.resource.profile.*;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.recruitment.domain.service.JobService;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.recruitment.mapping.JobMapper;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.recruitment.resource.CreateJobResource;
@@ -37,18 +36,32 @@ public class CompaniesController {
     }
 
     @PostMapping("{companyId}/jobs")
-    public ResponseEntity<JobResource> createCompany(@PathVariable Long companyId, @RequestBody CreateJobResource resource) {
+    public ResponseEntity<JobResource> createJob(@PathVariable Long companyId, @RequestBody CreateJobResource resource) {
         return new ResponseEntity<>(jobMapper.toResource(jobService.create(companyId,jobMapper.toModel(resource))), HttpStatus.CREATED);
     }
 
     @GetMapping("{companyId}/jobs")
-    public ResponseEntity<Page<JobResource>> createCompany(@PathVariable Long companyId, Pageable pageable) {
+    public ResponseEntity<Page<JobResource>> getAllCompanyJobs(@PathVariable Long companyId, Pageable pageable) {
         return new ResponseEntity<>(jobMapper.modelListPage(jobService.getAllByCompanyId(companyId), pageable), HttpStatus.OK);
     }
 
     @PutMapping("{companyId}")
     public ResponseEntity<CompanyResource> updateCompany(@PathVariable Long companyId, @RequestBody CreateCompanyResource resource) {
         return new ResponseEntity<>(companyMapper.toResource(companyService.update(companyId, companyMapper.toModel(resource))), HttpStatus.OK);
+    }
+
+    @PatchMapping("{companyId}/background-picture")
+    public ResponseEntity<CompanyResource> updateCompanyBackgroundPicture(@PathVariable Long developerId, @RequestParam(name = "url") String backgroundPicture){
+        return new ResponseEntity<>(companyMapper.toResource(companyService.updateBackgroundPicture(developerId, backgroundPicture)), HttpStatus.OK);
+    }
+    @PatchMapping("{companyId}/profile-picture")
+    public ResponseEntity<CompanyResource> updateCompanyProfilePicture(@PathVariable Long developerId, @RequestParam(name = "url") String profilePicture){
+        return new ResponseEntity<>(companyMapper.toResource(companyService.updateProfilePicture(developerId, profilePicture)), HttpStatus.OK);
+    }
+
+    @PatchMapping("{companyId}/about")
+    public ResponseEntity<CompanyResource> updateAboutCompany(@PathVariable Long companyId, @RequestBody UpdateAboutCompanyResource resource) {
+        return new ResponseEntity<>(companyMapper.toResource(companyService.updateAbout(companyId, companyMapper.toModel(resource))), HttpStatus.OK);
     }
     @PostMapping
     public ResponseEntity<CompanyResource> createCompany(@RequestParam(name = "location-id") Long locationId, @RequestBody CreateCompanyResource resource) {
