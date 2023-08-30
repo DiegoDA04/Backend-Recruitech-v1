@@ -15,7 +15,7 @@ import java.util.Optional;
 @Service
 public class ImageDataServiceImpl implements ImageDataService {
 
-    private static final String PATH = "https://spring-app-recruitech.bluewave-aef3079f.eastus.azurecontainerapps.io/api/v1/files/images/";
+    private static final String PATH = "https://app-backend-recruitech-230629033501.azurewebsites.net/api/v1/files/images/";
     private final ImageDataRepository imageDataRepository;
 
     public ImageDataServiceImpl(ImageDataRepository imageDataRepository) {

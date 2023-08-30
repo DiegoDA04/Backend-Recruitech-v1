@@ -6,10 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.recruitment.domain.service.JobService;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.recruitment.mapping.JobMapper;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.recruitment.resource.JobResource;
@@ -38,5 +35,21 @@ public class JobsController {
         return new ResponseEntity<>(jobMapper.toResource(jobService.getById(jobId)), HttpStatus.OK);
     }
 
+    @GetMapping("/featured")
+    @Operation(summary = "Get All Featured Jobs")
+    public ResponseEntity<Page<JobResource>> getAllFeaturedJobs(Pageable pageable) {
+        return new ResponseEntity<>(jobMapper.modelListPage(jobService.getAllFeaturedJobs(), pageable), HttpStatus.OK);
+    }
 
+    @GetMapping("/recommended")
+    @Operation(summary = "Get All Featured Jobs")
+    public ResponseEntity<Page<JobResource>> getAllRecommendedJobs(Pageable pageable) {
+        return new ResponseEntity<>(jobMapper.modelListPage(jobService.getAllRecommendedJobs(2), pageable), HttpStatus.OK);
+    }
+
+    @PatchMapping("{jobId}/featured")
+    @Operation(summary = "Update job to featured Job")
+    public ResponseEntity<JobResource> updateJobByFeaturedJob(@PathVariable Long jobId, Pageable pageable) {
+        return new ResponseEntity<>(jobMapper.toResource(jobService.updateJobFeaturedByTrue(jobId)), HttpStatus.OK);
+    }
 }

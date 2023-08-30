@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.recruitment.domain.model.entity.Job;
+import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.security.domain.model.entity.User;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -30,7 +31,7 @@ public class Company {
     @Length(max = 50)
     private String name;
 
-    @Length(max = 120)
+    @Length(max = 240)
     private String about;
 
     @Column(name = "profile_picture")
@@ -63,4 +64,9 @@ public class Company {
             fetch = FetchType.EAGER, mappedBy = "company")
     @JsonIgnore
     private Set<Experience> experiences = new HashSet<>();
+
+    // ONE TO ONE - USER
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
 }

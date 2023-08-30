@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>pe.edu.notcodingdevs.recruitech</groupId>
-    <artifactId>Backend-Recruitech_v2</artifactId>
+    <artifactId>Backend-Recruitech-v2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Backend-Recruitech_v2</name>
-    <description>Backend-Recruitech_v2</description>
+    <name>Backend-Recruitech-v2</name>
+    <description>Backend-Recruitech-v2</description>
     <properties>
         <java.version>17</java.version>
     </properties>

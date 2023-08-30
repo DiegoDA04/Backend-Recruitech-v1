@@ -1,5 +1,6 @@
 package pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.recruitment.resource;
 
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -19,6 +20,10 @@ public class CreateJobResource {
     @NotNull
     @NotBlank
     private String description;
+
+    @NotNull
+    @NotBlank
+    private String skillsDescription;
 
     @NotNull
     @NotBlank

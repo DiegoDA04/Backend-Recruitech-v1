@@ -49,6 +49,12 @@ public class Job {
     @NotBlank
     private String remuneration;
 
+    @NotNull
+    private Boolean isFeatured;
+
+    @NotNull
+    private Integer applicants;
+
     // RELATIONSHIPS
 
     // MANY TO ONE - COMPANY

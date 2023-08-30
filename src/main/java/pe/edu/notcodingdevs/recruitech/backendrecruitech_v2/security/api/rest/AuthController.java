@@ -5,9 +5,12 @@ import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.domain.model.entity.Location;
+import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.domain.service.CompanyService;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.domain.service.DeveloperService;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.domain.service.LocationService;
+import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.mapping.CompanyMapper;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.mapping.DeveloperMapper;
+import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.resource.profile.CreateCompanyResource;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.resource.profile.CreateDeveloperResource;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.security.domain.model.entity.User;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.security.domain.service.UserService;
@@ -22,13 +25,17 @@ public class AuthController {
     private final UserService userService;
     private final LocationService locationService;
     private final DeveloperService developerService;
+    private final CompanyService companyService;
     private final DeveloperMapper developerMapper;
+    private final CompanyMapper companyMapper;
 
-    public AuthController(UserService userService, LocationService locationService, DeveloperService developerService, DeveloperMapper developerMapper) {
+    public AuthController(UserService userService, LocationService locationService, DeveloperService developerService, CompanyService companyService, DeveloperMapper developerMapper, CompanyMapper companyMapper) {
         this.userService = userService;
         this.locationService = locationService;
         this.developerService = developerService;
+        this.companyService = companyService;
         this.developerMapper = developerMapper;
+        this.companyMapper = companyMapper;
     }
 
     @PostMapping("/sign-in")
@@ -46,6 +53,21 @@ public class AuthController {
         User user = userService.getByEmail(request.getEmail());
 
         developerService.create(developerMapper.toModel(resource), user, location);
+
+        return response;
+    }
+
+    @PostMapping("/company/sign-up")
+    public ResponseEntity<?> registerCompany(@RequestBody CreateCompanyResource resource) {
+        RegisterRequest request = new RegisterRequest();
+        request.setEmail(resource.getEmail());
+        request.setPassword(resource.getPassword());
+        ResponseEntity<?> response =  userService.register(request);
+
+        Location location = locationService.getByName(resource.getLocation().getName());
+        User user = userService.getByEmail(request.getEmail());
+
+        companyService.create(user,location,companyMapper.toModel(resource));
 
         return response;
     }

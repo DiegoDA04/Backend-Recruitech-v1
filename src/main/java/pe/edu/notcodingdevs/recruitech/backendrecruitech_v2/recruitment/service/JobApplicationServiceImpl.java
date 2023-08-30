@@ -35,8 +35,11 @@ public class JobApplicationServiceImpl implements JobApplicationService {
     public JobApplication create(Long developerId, Long jobId) {
         Developer developer = developerRepository.findById(developerId).orElseThrow(() -> new ResourceNotFoundException("Developer", developerId));
         Job job = jobRepository.findById(jobId).orElseThrow(() -> new ResourceNotFoundException("Job", jobId));
+        int applicants = job.getApplicants();
 
+        job.setApplicants(applicants + 1);
 
+        jobRepository.save(job);
 
         Optional<JobApplication> jobApplicationWithDeveloperAndJob = jobApplicationRepository.findByDeveloperIdAndJobId(developerId,jobId);
 
@@ -57,6 +60,11 @@ public class JobApplicationServiceImpl implements JobApplicationService {
     @Override
     public List<JobApplication> getAll() {
         return jobApplicationRepository.findAll();
+    }
+
+    @Override
+    public List<JobApplication> getAllNoDeveloperApplications() {
+        return null;
     }
 
     @Override

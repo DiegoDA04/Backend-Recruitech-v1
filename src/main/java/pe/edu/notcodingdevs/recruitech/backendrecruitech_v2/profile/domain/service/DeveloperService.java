@@ -11,6 +11,7 @@ public interface DeveloperService {
     Developer updateProfilePicture(Long developerId, String profilePicture);
     Developer updateBackgroundPicture(Long developerId, String backgroundPicture);
     Developer updateAbout(Long developerId, Developer developer);
+
     List<Developer> getAll();
     Developer getById(Long developerId);
     Developer getByUSerId(Long userId);

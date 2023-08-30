@@ -7,6 +7,9 @@ import java.util.List;
 public interface JobService {
     Job create(Long companyId, Job job);
     Job getById(Long jobId);
+    List<Job> getAllRecommendedJobs(Integer nApplicants);
+    List<Job> getAllFeaturedJobs();
+    Job updateJobFeaturedByTrue(Long jobId);
     List<Job> getAllByCompanyId(Long companyId);
     List<Job> getAll();
 }

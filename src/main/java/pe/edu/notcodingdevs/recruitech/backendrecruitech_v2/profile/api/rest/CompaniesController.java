@@ -63,8 +63,5 @@ public class CompaniesController {
     public ResponseEntity<CompanyResource> updateAboutCompany(@PathVariable Long companyId, @RequestBody UpdateAboutCompanyResource resource) {
         return new ResponseEntity<>(companyMapper.toResource(companyService.updateAbout(companyId, companyMapper.toModel(resource))), HttpStatus.OK);
     }
-    @PostMapping
-    public ResponseEntity<CompanyResource> createCompany(@RequestParam(name = "location-id") Long locationId, @RequestBody CreateCompanyResource resource) {
-        return new ResponseEntity<>(companyMapper.toResource(companyService.create(locationId,companyMapper.toModel(resource))), HttpStatus.CREATED);
-    }
+
 }

@@ -28,9 +28,10 @@ public class DeveloperServiceImpl implements DeveloperService {
     public Developer create(Developer developer, User user, Location location) {
         developer.setLocation(location);
         developer.setUser(user);
-        developer.setBackgroundPicture("https://spring-app-recruitech.bluewave-aef3079f.eastus.azurecontainerapps.io/api/v1/files/images/default_background.png");
-        developer.setProfilePicture("https://spring-app-recruitech.bluewave-aef3079f.eastus.azurecontainerapps.io/api/v1/files/images/default_profile.png");
         developer.setAbout("");
+        developer.setOccupation("Developer");
+        developer.setProfilePicture("https://app-backend-recruitech-230629033501.azurewebsites.net/api/v1/files/images/default_profile.png");
+        developer.setBackgroundPicture("https://app-backend-recruitech-230629033501.azurewebsites.net/api/v1/files/images/default_background.png");
 
         return developerRepository.save(developer);
     }

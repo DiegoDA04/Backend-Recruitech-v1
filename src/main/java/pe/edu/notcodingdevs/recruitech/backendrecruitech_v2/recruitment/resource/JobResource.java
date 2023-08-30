@@ -9,10 +9,10 @@ import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.resource.pro
 @NoArgsConstructor
 @With
 public class JobResource {
-
     private Long id;
     private String title;
     private String description;
+    private String skillsDescription;
     private String type;
     private String remuneration;
     private CompanyResource company;

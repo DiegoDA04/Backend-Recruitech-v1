@@ -26,6 +26,8 @@ public class JobServiceImpl implements JobService {
     public Job create(Long companyId, Job job) {
         Company company = companyRepository.findById(companyId).orElseThrow(() -> new ResourceNotFoundException("Company", companyId));
         job.setCompany(company);
+        job.setApplicants(0);
+        job.setIsFeatured(false);
 
         return jobRepository.save(job);
     }
@@ -36,8 +38,27 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
+    public List<Job> getAllRecommendedJobs(Integer nApplicants) {
+        return jobRepository.findAllByApplicantsGreaterThan(nApplicants);
+    }
+
+    @Override
+    public List<Job> getAllFeaturedJobs() {
+        return jobRepository.findAllByIsFeaturedIsTrue();
+    }
+
+    @Override
+    public Job updateJobFeaturedByTrue(Long jobId) {
+        Job job = jobRepository.findById(jobId).orElseThrow(() -> new ResourceNotFoundException(ENTITY, jobId));
+        job.setIsFeatured(true);
+        job.setApplicants(0);
+
+        return jobRepository.save(job);
+    }
+
+    @Override
     public List<Job> getAllByCompanyId(Long companyId) {
-        return jobRepository.findByCompanyId(companyId);
+        return jobRepository.findAllByCompanyId(companyId);
     }
 
     @Override

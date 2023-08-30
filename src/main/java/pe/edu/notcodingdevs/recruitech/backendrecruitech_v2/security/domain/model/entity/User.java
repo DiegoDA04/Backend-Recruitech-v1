@@ -9,6 +9,7 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.chat.domain.model.entity.Chat;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.chat.domain.model.entity.Message;
+import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.domain.model.entity.Company;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.domain.model.entity.Developer;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.shared.domain.model.AuditModel;
 
@@ -44,6 +45,10 @@ public class User extends AuditModel {
     // ONE-TO-ONE RELATIONSHIP
     @OneToOne(mappedBy = "user")
     private Developer developer;
+
+    // ONE-TO-ONE RELATIONSHIP
+    @OneToOne(mappedBy = "user")
+    private Company company;
 
     // MANY-TO-MANY RELATIONSHIP
     @ManyToMany(fetch = FetchType.EAGER)

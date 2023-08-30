@@ -9,6 +9,8 @@ public interface JobApplicationService {
     JobApplication create(Long developerId, Long jobId);
     List<JobApplication> getAllByDeveloperId(Long developerId);
     List<JobApplication> getAll();
+
+    List<JobApplication> getAllNoDeveloperApplications();
     JobApplication getById(Long id);
 
 }

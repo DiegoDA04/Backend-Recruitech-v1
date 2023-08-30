@@ -8,6 +8,7 @@ import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.domain.model
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.domain.persistence.CompanyRepository;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.domain.persistence.LocationRepository;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.profile.domain.service.CompanyService;
+import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.security.domain.model.entity.User;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.shared.exception.ResourceNotFoundException;
 import pe.edu.notcodingdevs.recruitech.backendrecruitech_v2.shared.exception.ResourceValidationException;
 
@@ -28,25 +29,12 @@ public class CompanyServiceImpl implements CompanyService {
         this.locationRepository = locationRepository;
         this.validator = validator;
     }
-
-
     @Override
-    public Company create(Long locationId, Company company) {
-        Set<ConstraintViolation<Company>> violations = validator.validate(company);
-
-        if(!violations.isEmpty())
-            throw new ResourceValidationException(ENTITY, violations);
-
-        Optional<Company> companyWithName = companyRepository.findByName(company.getName());
-
-        if(companyWithName.isPresent())
-            throw new ResourceValidationException(ENTITY, "An country with the same name already exists.");
-
-        Optional<Location> location = locationRepository.findById(locationId);
-        company.setLocation(location.get());
-        company.setBackgroundPicture("https://spring-app-recruitech.bluewave-aef3079f.eastus.azurecontainerapps.io/api/v1/files/images/default_background.png");
-        company.setProfilePicture("https://spring-app-recruitech.bluewave-aef3079f.eastus.azurecontainerapps.io/api/v1/files/images/default_profile.png");
-        company.setAbout("");
+    public Company create(User user, Location location, Company company) {
+        company.setLocation(location);
+        company.setUser(user);
+        company.setProfilePicture("https://app-backend-recruitech-230629033501.azurewebsites.net/api/v1/files/images/default_profile.png");
+        company.setBackgroundPicture("https://app-backend-recruitech-230629033501.azurewebsites.net/api/v1/files/images/default_background.png");
 
         return companyRepository.save(company);
     }

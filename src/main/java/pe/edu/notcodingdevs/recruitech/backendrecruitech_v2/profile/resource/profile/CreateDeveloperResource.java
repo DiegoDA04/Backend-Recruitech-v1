@@ -42,7 +42,9 @@ public class CreateDeveloperResource {
     private String occupation;
 
     private CreateLocationResource location;
+
     private String backgroundPicture;
+
     private String profilePicture;
 
     @Email
